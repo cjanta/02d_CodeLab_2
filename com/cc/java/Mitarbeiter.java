@@ -2,22 +2,22 @@ package com.cc.java;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collector;
+
 import java.util.stream.Collectors;
 
 public class Mitarbeiter {
 
-    private static final String KEY_FAMILY_NAME = "familyName";
-    private static final String KEY_FIRST_NAME = "firstName";
-    private static final String KEY_ROLE = "role";
-    private static final String KEY_YEAR_OF_ENTRY_STRING = "yearOfEntry" ;
+    public static final String KEY_FAMILY_NAME = "familyName";
+    public static final String KEY_FIRST_NAME = "firstName";
+    public static final String KEY_ROLE = "role";
+    public static final String KEY_YEAR_OF_ENTRY = "yearOfEntry" ;
 
     private Map<String, Object> data = new HashMap<>();
     {
         data.put(KEY_FAMILY_NAME, "");
         data.put(KEY_FIRST_NAME, "");
         data.put(KEY_ROLE, "");
-        data.put(KEY_YEAR_OF_ENTRY_STRING, "");
+        data.put(KEY_YEAR_OF_ENTRY, "");
     }
 
 
@@ -25,7 +25,7 @@ public class Mitarbeiter {
         commitChanges(KEY_FAMILY_NAME, familyName);
         commitChanges(KEY_FIRST_NAME, firstName);
         commitChanges(KEY_ROLE, role);
-        commitChanges(KEY_YEAR_OF_ENTRY_STRING, Integer.valueOf(yearOfEntry));
+        commitChanges(KEY_YEAR_OF_ENTRY, Integer.valueOf(yearOfEntry));
 
     }
 
@@ -42,7 +42,7 @@ public class Mitarbeiter {
             return data.get(key);
         } else {
             LogHelper.log("FEHLER: Schlüssel wurd nicht gefunden. Mapping fehlerhaft?");
-            return "";
+            return "ERROR";
         }
     }
 
@@ -54,5 +54,14 @@ public class Mitarbeiter {
         return data.entrySet().stream()
             .map(e -> "" + e.getKey() + ": " + e.getValue())
             .collect(Collectors.joining("\t"));
+    }
+
+    @Override
+    public String toString() {
+        return getData(KEY_ROLE) +
+                    ": \"" + getData(KEY_FIRST_NAME) +
+                    " " + getData(KEY_FAMILY_NAME) +
+                    "\" ist seit dem Jahr " +
+                    getData(KEY_YEAR_OF_ENTRY) +  " angestellt.\n";
     }
 }
