@@ -17,11 +17,15 @@ public class App {
 		mitarbeiter.add(mit3);
 
 
-		LogHelper.log("*************************************");
+		LogHelper.log("\n*************************************");
 		mitarbeiter.forEach(m -> LogHelper.log(m.getInfoDesignation()));
+		
 		LogHelper.log("*************************************");
-		LogHelper.log(mit3.getInfo(Mitarbeiter.KEY_YEAR_OF_ENTRY));
-		LogHelper.log("*************************************");
+		LogHelper.log(mit3.getInfo(Mitarbeiter.KEY_FIRST_NAME));
+		//Fehler
+		//LogHelper.log(mit3.getInfo("irgendeine Zeichenkette"));
+
+		LogHelper.log("\n*************************************");
 		LogHelper.log(mit1);
 		LogHelper.log(mit2);
 		LogHelper.log(mit3);

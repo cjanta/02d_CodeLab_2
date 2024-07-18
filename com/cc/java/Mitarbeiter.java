@@ -2,7 +2,6 @@ package com.cc.java;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import java.util.stream.Collectors;
 
 public class Mitarbeiter {
@@ -33,7 +32,7 @@ public class Mitarbeiter {
         if (data.containsKey(key)) {
             data.put(key, value);
         } else {
-            LogHelper.log("FEHLER: Schlüssel wurd nicht gefunden. Mapping fehlerhaft?");
+            throwUnsupportedOperationException(key);
         }
     }
 
@@ -41,10 +40,15 @@ public class Mitarbeiter {
         if (data.containsKey(key)) {
             return data.get(key);
         } else {
-            LogHelper.log("FEHLER: Schlüssel wurd nicht gefunden. Mapping fehlerhaft?");
-            return "ERROR";
+            throwUnsupportedOperationException(key);
+            return null;
         }
     }
+
+    public void throwUnsupportedOperationException(String key){
+        throw new UnsupportedOperationException("FEHLER: Schlüssel: \"" + key + "\" wurde nicht gefunden. Mapping fehlerhaft?");
+    }
+
 
     public String getInfo(String key){
         return String.valueOf(getData(key));
