@@ -21,14 +21,14 @@ public class Mitarbeiter {
 
 
     public Mitarbeiter(String familyName, String firstName, String role, int yearOfEntry){
-        commitChanges(KEY_FAMILY_NAME, familyName);
-        commitChanges(KEY_FIRST_NAME, firstName);
-        commitChanges(KEY_ROLE, role);
-        commitChanges(KEY_YEAR_OF_ENTRY, Integer.valueOf(yearOfEntry));
+        set(KEY_FAMILY_NAME, familyName);
+        set(KEY_FIRST_NAME, firstName);
+        set(KEY_ROLE, role);
+        set(KEY_YEAR_OF_ENTRY, Integer.valueOf(yearOfEntry));
 
     }
 
-    private void commitChanges(String key, Object value) {
+    private void set(String key, Object value) {
         if (data.containsKey(key)) {
             data.put(key, value);
         } else {
