@@ -55,17 +55,14 @@ public class Mitarbeiter {
     }
 
     public String getInfoDesignation(){
-        return data.entrySet().stream()
-            .map(e -> "" + e.getKey() + ": " + e.getValue())
-            .collect(Collectors.joining("\t"));
+        return data.entrySet().stream().map(e -> "" + e.getKey() + ": " + e.getValue()).collect(Collectors.joining("\t"));
     }
 
     @Override
     public String toString() {
-        return getData(KEY_ROLE) +
-                    ": \"" + getData(KEY_FIRST_NAME) +
-                    " " + getData(KEY_FAMILY_NAME) +
-                    "\" ist seit dem Jahr " +
-                    getData(KEY_YEAR_OF_ENTRY) +  " angestellt.\n";
+        return getData(KEY_ROLE) 
+            + ": \""   + getData(KEY_FIRST_NAME) + " " 
+            + getData(KEY_FAMILY_NAME) + "\" ist seit dem Jahr " 
+            + getData(KEY_YEAR_OF_ENTRY) +  " angestellt.\n";
     }
 }
